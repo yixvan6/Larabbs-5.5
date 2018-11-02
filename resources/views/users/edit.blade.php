@@ -30,6 +30,15 @@
                     <label for="intro-field">个人简介</label>
                     <textarea name="intro" id="intro-field" class="form-control" rows="3">{{ old('intro', $user->intro) }}</textarea>
                 </div>
+                <div class="form-group">
+                    <label for="" class="avatar-label">用户头像</label>
+                    <input type="file" name="avatar">
+
+                    @if($user->avatar)
+                        <br>
+                        <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="200" />
+                    @endif
+                </div>
                 <div class="well well-sm">
                     <button type="submit" class="btn btn-primary">保存</button>
                 </div>
