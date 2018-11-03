@@ -7,14 +7,9 @@ class TopicsTableSeeder extends Seeder
 {
     public function run()
     {
-        $topics = factory(Topic::class)->times(50)->make()->each(function ($topic, $index) {
-            if ($index == 0) {
-                // $topic->field = 'value';
-            }
-        });
+        $topics = factory(Topic::class, 100)->make();
 
         Topic::insert($topics->toArray());
     }
-
 }
 
