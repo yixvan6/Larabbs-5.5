@@ -10,17 +10,13 @@ class TopicRequest extends Request
         {
             // CREATE
             case 'POST':
-            {
-                return [
-                    // CREATE ROLES
-                ];
-            }
             // UPDATE
             case 'PUT':
             case 'PATCH':
             {
                 return [
-                    // UPDATE ROLES
+                    'title' => 'required|min:3',
+                    'body' => 'required|min:10',
                 ];
             }
             case 'GET':
@@ -35,7 +31,7 @@ class TopicRequest extends Request
     public function messages()
     {
         return [
-            // Validation messages
+            'body.min' => '话题内容至少 10 个字符',
         ];
     }
 }
