@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title', 'welcome') - LaraBBS4</title>
-    <meta name="description" content="@yield('description')">
+    <title>@yield('title', 'welcome') - {{ setting('site_name', 'LaraBBS4') }}</title>
+    <meta name="description" content="@yield('description', setting('seo_description'))">
+    <meta name="keyword" content="{{ setting('seo_keyword') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
