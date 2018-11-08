@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
 use App\Handlers\ImageUploadHandler;
+use App\Models\User;
 
 class TopicsController extends Controller
 {
@@ -16,11 +17,12 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index(Request $request)
+	public function index(Request $request, User $user)
 	{
 		$topics = Topic::orderWith($request->order)->paginate();
+        $active_users = $user->getActiveUsers();
 
-		return view('topics.index', compact('topics'));
+		return view('topics.index', compact('topics', 'active_users'));
 	}
 
     public function show(Topic $topic, Request $request)
