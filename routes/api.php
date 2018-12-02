@@ -46,6 +46,9 @@ $api->version('v1', [
         // 话题分类列表
         $api->get('categories', 'CategoriesController@index')
             ->name('api.categories.index');
+        // 发布话题
+        $api->post('topics', 'TopicsController@store')
+            ->name('api.topics.store');
 
         // 需要 token 验证
         $api->group(['middleware' => 'api.auth'], function ($api) {
