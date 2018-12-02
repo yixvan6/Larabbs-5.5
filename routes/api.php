@@ -42,7 +42,10 @@ $api->version('v1', [
         'limit' => config('api.rate_limits.access.limit'),
         'expires' => config('api.rate_limits.access.expires')
     ], function ($api) {
-        // 游客可访问的
+        // 游客可访问的接口
+        // 话题分类列表
+        $api->get('categories', 'CategoriesController@index')
+            ->name('api.categories.index');
 
         // 需要 token 验证
         $api->group(['middleware' => 'api.auth'], function ($api) {
