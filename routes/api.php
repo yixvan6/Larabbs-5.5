@@ -47,8 +47,14 @@ $api->version('v1', [
         // 需要 token 验证
         $api->group(['middleware' => 'api.auth'], function ($api) {
             // 当前登录用户信息
-            $api->get('/user', 'UsersController@me')
+            $api->get('user', 'UsersController@me')
                 ->name('api.user.show');
+            // 图片资源
+            $api->post('images', 'ImagesController@store')
+                ->name('api.images.store');
+            // 编辑个人资料
+            $api->patch('user', 'UsersController@update')
+                ->name('api.user.update');
         });
     });
 });
