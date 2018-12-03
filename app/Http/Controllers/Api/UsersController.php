@@ -7,6 +7,7 @@ use App\Http\Requests\Api\UserRequest;
 use App\Models\User;
 use App\Models\Image;
 use App\Transformers\UserTransformer;
+use App\Transformers\PermissionTransformer;
 
 class UsersController extends Controller
 {
@@ -59,5 +60,12 @@ class UsersController extends Controller
         $user->update($attributes);
 
         return $this->response->item($user, new UserTransformer());
+    }
+
+    public function permissionsIndex()
+    {
+        $permissions = $this->user()->getAllPermissions();
+
+        return $this->response->collection($permissions, new PermissionTransformer());
     }
 }
