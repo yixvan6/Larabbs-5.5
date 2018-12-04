@@ -61,6 +61,9 @@ $api->version('v1', [
         // 用户的回复列表
         $api->get('users/{user}/replies', 'RepliesController@userIndex')
             ->name('api.users.replies.index');
+        // 资源列表
+        $api->get('links', 'LinksController@index')
+            ->name('api.links.index');
 
         // 需要 token 验证
         $api->group(['middleware' => 'api.auth'], function ($api) {
