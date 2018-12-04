@@ -64,6 +64,9 @@ $api->version('v1', [
         // 资源列表
         $api->get('links', 'LinksController@index')
             ->name('api.links.index');
+        // 活跃用户列表
+        $api->get('actived/users', 'UsersController@activedIndex')
+            ->name('api.actived.users.index');
 
         // 需要 token 验证
         $api->group(['middleware' => 'api.auth'], function ($api) {

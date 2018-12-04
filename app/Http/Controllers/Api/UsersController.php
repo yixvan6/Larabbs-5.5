@@ -68,4 +68,9 @@ class UsersController extends Controller
 
         return $this->response->collection($permissions, new PermissionTransformer());
     }
+
+    public function activedIndex(User $user)
+    {
+        return $this->response->collection($user->getActiveUsers(), new UserTransformer());
+    }
 }
